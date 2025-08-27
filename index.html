@@ -154,7 +154,30 @@
                 variables.push(varName);
             }
 
-            const final = header + obfuscated + `loadstring(string.char(${variables.join(",")}))()`;
+            // Generate fake junk code
+            function generateJunkCode() {
+                const junkPatterns = [
+                    `{[(( loadstring(String.char(${Array.from({length: Math.floor(Math.random() * 30) + 20}, () => Math.floor(Math.random() * 9) + 1).join('/')}`,
+                    `${Math.floor(Math.random() * 9999) + 1000}-(${Math.floor(Math.random() * 999999) + 100000}) + ( ${Math.floor(Math.random() * 99999) + 10000}) -_ ( ${Math.floor(Math.random() * 9999999) + 1000000} ) end if ( ${Math.floor(Math.random() * 99999) + 10000}) return+-(${Math.floor(Math.random() * 99999) + 10000}l [((wodh${Math.floor(Math.random() * 9999) + 1000}}]] -+++( ${Math.floor(Math.random() * 9999) + 1000} ) - (${Math.floor(Math.random() * 99999) + 10000})`,
+                    `then (+) LOL +(${Math.floor(Math.random() * 99999) + 10000}) + ( ${String(Math.floor(Math.random() * 99999) + 10000).padStart(5, '0')}) ${Math.floor(Math.random() * 999999) + 100000} l end getnf (${String(Math.floor(Math.random() * 9999) + 1000).padStart(4, '0')}) return+(${String(Math.floor(Math.random() * 999) + 100).padStart(3, '0')}) ))()`,
+                    `[${Math.floor(Math.random() * 999) + 100}] elseif (${Math.floor(Math.random() * 99999) + 10000}) ~= nil then return false end local fake${Math.floor(Math.random() * 999) + 100} = ${Math.floor(Math.random() * 999) + 100}`,
+                    `while (${Math.floor(Math.random() * 99) + 10}) do break end repeat until (${Math.floor(Math.random() * 999) + 100}) == ${Math.floor(Math.random() * 999) + 100}`,
+                    `function decoy${Math.floor(Math.random() * 999) + 100}() return ${Math.floor(Math.random() * 9999) + 1000} + ${Math.floor(Math.random() * 9999) + 1000} - ${Math.floor(Math.random() * 9999) + 1000} end`,
+                    `local garbage${Math.floor(Math.random() * 999) + 100} = {${Array.from({length: Math.floor(Math.random() * 10) + 5}, () => Math.floor(Math.random() * 999) + 100).join(',')}}`,
+                    `if math.random(${Math.floor(Math.random() * 9) + 1},${Math.floor(Math.random() * 99) + 10}) > ${Math.floor(Math.random() * 50) + 1} then error("${['FAKE','DECOY','DUMMY','TRAP'][Math.floor(Math.random() * 4)]}") end`,
+                    `pcall(function() return tonumber("${Math.floor(Math.random() * 99999) + 10000}") / ${Math.floor(Math.random() * 9) + 1} end)`,
+                    `table.insert({}, string.char(${Array.from({length: Math.floor(Math.random() * 8) + 3}, () => Math.floor(Math.random() * 126) + 32).join(',')}))`
+                ];
+                
+                let junk = '\n\n-- (202829) + (you 0282 ) - (2)20282) if mpt (+)\n';
+                for (let i = 0; i < Math.floor(Math.random() * 15) + 10; i++) {
+                    junk += junkPatterns[Math.floor(Math.random() * junkPatterns.length)] + '\n';
+                }
+                junk += `-- END DECOY LAYER ${Math.floor(Math.random() * 999) + 100}\n`;
+                return junk;
+            }
+
+            const final = header + obfuscated + `loadstring(string.char(${variables.join(",")}))()` + generateJunkCode();
 
             // Download the obfuscated file
             const blob = new Blob([final], { type: 'text/plain' });
