@@ -3,193 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Script Obfuscator</title>
+    <title>AuxFuscator 7.0.7</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Courier New', monospace;
             background-color: #1a1a1a;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
             padding: 20px;
         }
-
+        
         .container {
-            width: 100%;
             max-width: 800px;
+            margin: 0 auto;
         }
-
+        
         h1 {
             text-align: center;
-            color: #00ff7f;
             margin-bottom: 30px;
-            font-size: 2rem;
+            color: #ffffff;
         }
-
+        
         .input-section {
             margin-bottom: 20px;
         }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            color: #ccc;
-            font-size: 1.1rem;
-        }
-
+        
         textarea {
             width: 100%;
-            height: 300px;
+            height: 200px;
             background-color: #2d2d2d;
-            border: 2px solid #444;
-            border-radius: 8px;
-            color: #fff;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            padding: 15px;
+            color: #ffffff;
+            border: 1px solid #555;
+            padding: 10px;
+            font-family: monospace;
             resize: vertical;
         }
-
-        textarea:focus {
-            outline: none;
-            border-color: #00ff7f;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .obfuscate-btn {
-            background-color: #00ff7f;
-            color: #000;
+        
+        button {
+            background-color: #007acc;
+            color: white;
             border: none;
-            padding: 15px 40px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 8px;
+            padding: 10px 20px;
             cursor: pointer;
-            font-family: inherit;
-            transition: background-color 0.3s ease;
+            margin: 10px 5px 10px 0;
         }
-
-        .obfuscate-btn:hover {
-            background-color: #00cc66;
+        
+        button:hover {
+            background-color: #005a99;
         }
-
-        .obfuscate-btn:active {
-            background-color: #009955;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 1.5rem;
-            }
-            
-            textarea {
-                height: 250px;
-            }
+        
+        .output-section {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Script Obfuscator</h1>
+        <h1>AuxFuscator 7.0.7</h1>
         
         <div class="input-section">
-            <label for="scriptInput">Put your script here...</label>
-            <textarea id="scriptInput" placeholder="-- Paste your Lua script here"></textarea>
+            <textarea id="input" placeholder="Put your loadstring(game:HttpGet(&quot;Your_raw_link_script&quot;))()"></textarea>
         </div>
-
-        <div class="button-container">
-            <button class="obfuscate-btn" onclick="obfuscateAndDownload()">Obfuscate</button>
-        </div>
+        
+        <button id="obfuscateBtn">Obfuscate</button>
     </div>
 
     <script>
-        // Your obfuscation algorithm
-        function generateVariableName(length) {
-            const chars = "mnbvcxzlkjhgfdsapoiuytrewqMLPNKOBJIBHUVGYCFTXDRZDESAWQERIFNCMAPIWYRIEOWNCHEI_24910836463910193746_______9208264_______965875______5775675577______6765899IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII";
+        // Obfuscation Function
+        function v1(v2) {
+            const v3 = [];
+            const v4 = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIPPPPPPPPPPPPPPPPPPPPPPPPPPPDDDDDDDDDDDDDDDDDQQQQQQQQQQQQQQKKKKKKKKKKKKKKKKKKXXXXXXXXXXXXXXXKKSSSSSSSSSSSSSUUUUUUUUOOOOOOOOOOOOOOTTTTTTTTT";
             
-            let result = "";
-            const varLength = Math.floor(Math.random() * 16) + 5; // 5-20 characters
-            for (let i = 0; i < varLength; i++) {
-                const randomIndex = Math.floor(Math.random() * chars.length);
-                result += chars[randomIndex];
+            for (let v5 = 1; v5 <= v2; v5++) {
+                const v6 = Math.floor(Math.random() * 40) + 35;
+                let v7 = "";
+                for (let v8 = 1; v8 <= v6; v8++) {
+                    const v9 = Math.floor(Math.random() * v4.length);
+                    v7 += v4[v9];
+                }
+                v3.push(v7);
             }
-            return result;
+            return v3.join("");
         }
 
-        function obfuscateAndDownload() {
-            const input = document.getElementById('scriptInput').value;
-            
-            if (!input.trim()) {
-                alert('Please enter a script to obfuscate!');
+        const input = document.getElementById('input');
+        const obfuscateBtn = document.getElementById('obfuscateBtn');
+
+        obfuscateBtn.addEventListener('click', function() {
+            const raw = input.value;
+            if (raw === "") {
+                alert("Please enter some code to obfuscate!");
                 return;
             }
 
-            const header = "--[[ █████╗ ██╗  ██╗██╗   ██╗███████╗     ██████╗ ██████╗ ███████╗██╗   ██╗███████╗ ██████╗ █████╗ ████████╗ ██████╗ ██████╗ \n██╔══██╗╚██╗██╔╝██║   ██║██╔════╝    ██╔═══██╗██╔══██╗██╔════╝██║   ██║██╔════╝██╔════╝██╔══██╗╚══██╔══╝██╔═══██╗██╔══██╗\n███████║ ╚███╔╝ ██║   ██║███████╗    ██║   ██║██████╔╝█████╗  ██║   ██║███████╗██║     ███████║   ██║   ██║   ██║██████╔╝\n██╔══██║ ██╔██╗ ██║   ██║╚════██║    ██║   ██║██╔══██╗██╔══╝  ██║   ██║╚════██║██║     ██╔══██║   ██║   ██║   ██║██╔══██╗\n██║  ██║██╔╝ ██╗╚██████╔╝███████║    ╚██████╔╝██████╔╝██║     ╚██████╔╝███████║╚██████╗██║  ██║   ██║   ╚██████╔╝██║  ██║\n╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝     ╚═════╝ ╚═════╝ ╚═╝      ╚═════╝ ╚══════╝ ╚═════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝ ]]\n\n";
+            const header = "--[[ AuxFuscator 7.0.7 █████╗ ██╗  ██╗██╗   ██╗███████╗     ██████╗ ██████╗ ███████╗██╗   ██╗███████╗ ██████╗ █████╗ ████████╗ ██████╗ ██████╗ \n██╔══██╗╚██╗██╔╝██║   ██║██╔════╝    ██╔═══██╗██╔══██╗██╔════╝██║   ██║██╔════╝██╔════╝██╔══██╗╚══██╔══╝██╔═══██╗██╔══██╗\n███████║ ╚███╔╝ ██║   ██║███████╗    ██║   ██║██████╔╝█████╗  ██║   ██║███████╗██║     ███████║   ██║   ██║   ██║██████╔╝\n██╔══██║ ██╔██╗ ██║   ██║╚════██║    ██║   ██║██╔══██╗██╔══╝  ██║   ██║╚════██║██║     ██╔══██║   ██║   ██║   ██║██╔══██╗\n██║  ██║██╔╝ ██╗╚██████╔╝███████║    ╚██████╔╝██████╔╝██║     ╚██████╔╝███████║╚██████╗██║  ██║   ██║   ╚██████╔╝██║  ██║\n╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝     ╚═════╝ ╚═════╝ ╚═╝      ╚═════╝ ╚══════╝ ╚═════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝ ]]\n\n";
 
             let obfuscated = "";
-            let variables = [];
+            const vars = [];
 
-            // Convert each character to a variable using your algorithm
-            for (let i = 0; i < input.length; i++) {
-                const byte = input.charCodeAt(i);
-                const varName = generateVariableName(Math.floor(Math.random() * 46) + 5); // Random length 5-50
-                obfuscated += `local ${varName}='${byte}';`;
-                variables.push(varName);
+            for (let i = 0; i < raw.length; i++) {
+                const byte = raw.charCodeAt(i);
+                const varName = v1(Math.floor(Math.random() * 50) + 1);
+                obfuscated += "local " + varName + "='" + byte + "';";
+                vars.push(varName);
             }
 
-            // Generate fake junk code
-            function generateJunkCode() {
-                const junkPatterns = [
-                    `{[(( loadstring(String.char(${Array.from({length: Math.floor(Math.random() * 30) + 20}, () => Math.floor(Math.random() * 9) + 1).join('/')}`,
-                    `${Math.floor(Math.random() * 9999) + 1000}-(${Math.floor(Math.random() * 999999) + 100000}) + ( ${Math.floor(Math.random() * 99999) + 10000}) -_ ( ${Math.floor(Math.random() * 9999999) + 1000000} ) end if ( ${Math.floor(Math.random() * 99999) + 10000}) return+-(${Math.floor(Math.random() * 99999) + 10000}l [((wodh${Math.floor(Math.random() * 9999) + 1000}}]] -+++( ${Math.floor(Math.random() * 9999) + 1000} ) - (${Math.floor(Math.random() * 99999) + 10000})`,
-                    `then (+) LOL +(${Math.floor(Math.random() * 99999) + 10000}) + ( ${String(Math.floor(Math.random() * 99999) + 10000).padStart(5, '0')}) ${Math.floor(Math.random() * 999999) + 100000} l end getnf (${String(Math.floor(Math.random() * 9999) + 1000).padStart(4, '0')}) return+(${String(Math.floor(Math.random() * 999) + 100).padStart(3, '0')}) ))()`,
-                    `[${Math.floor(Math.random() * 999) + 100}] elseif (${Math.floor(Math.random() * 99999) + 10000}) ~= nil then return false end local fake${Math.floor(Math.random() * 999) + 100} = ${Math.floor(Math.random() * 999) + 100}`,
-                    `while (${Math.floor(Math.random() * 99) + 10}) do break end repeat until (${Math.floor(Math.random() * 999) + 100}) == ${Math.floor(Math.random() * 999) + 100}`,
-                    `function decoy${Math.floor(Math.random() * 999) + 100}() return ${Math.floor(Math.random() * 9999) + 1000} + ${Math.floor(Math.random() * 9999) + 1000} - ${Math.floor(Math.random() * 9999) + 1000} end`,
-                    `local garbage${Math.floor(Math.random() * 999) + 100} = {${Array.from({length: Math.floor(Math.random() * 10) + 5}, () => Math.floor(Math.random() * 999) + 100).join(',')}}`,
-                    `if math.random(${Math.floor(Math.random() * 9) + 1},${Math.floor(Math.random() * 99) + 10}) > ${Math.floor(Math.random() * 50) + 1} then error("${['FAKE','DECOY','DUMMY','TRAP'][Math.floor(Math.random() * 4)]}") end`,
-                    `pcall(function() return tonumber("${Math.floor(Math.random() * 99999) + 10000}") / ${Math.floor(Math.random() * 9) + 1} end)`,
-                    `table.insert({}, string.char(${Array.from({length: Math.floor(Math.random() * 8) + 3}, () => Math.floor(Math.random() * 126) + 32).join(',')}))`
-                ];
-                
-                let junk = '\n\n-- (202829) + (you 0282 ) - (2)20282) if mpt (+)\n';
-                for (let i = 0; i < Math.floor(Math.random() * 15) + 10; i++) {
-                    junk += junkPatterns[Math.floor(Math.random() * junkPatterns.length)] + '\n';
-                }
-                junk += `-- END DECOY LAYER ${Math.floor(Math.random() * 999) + 100}\n`;
-                return junk;
-            }
-
-            const final = header + obfuscated + `loadstring(string.char(${variables.join(",")}))()` + generateJunkCode();
-
-            // Download the obfuscated file
+            const final = header + obfuscated + "loadstring(string.char(" + vars.join(",") + "))()";
+            
+            // Download the result directly
             const blob = new Blob([final], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `obfuscated_${new Date().getTime()}.lua`;
-            document.body.appendChild(a);
+            a.download = 'obfuscated_script.lua';
             a.click();
-            document.body.removeChild(a);
             URL.revokeObjectURL(url);
-        }
+        });
     </script>
 </body>
 </html>
